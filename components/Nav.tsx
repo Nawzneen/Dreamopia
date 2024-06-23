@@ -2,11 +2,17 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import logo from '../public/Logo.png'
+import {Dela_Gothic_One} from "next/font/google"
 import { signIn, signOut, useSession, getProviders, ClientSafeProvider } from 'next-auth/react';
 
 interface Providers {
   [key: string]: ClientSafeProvider;
 }
+const delaGothicOne = Dela_Gothic_One({
+  subsets: ['latin'],
+  weight: '400',
+});
 
 export default function Nav() {
   const isUserLoggedIn = true;
@@ -22,10 +28,10 @@ export default function Nav() {
   }, []);
 
   return (
-    <nav className="justify-between flex w-full mb-16 pt-3">
+    <nav className=" justify-between flex w-full mb-16 pt-3">
       <Link href="/" className="flex gap-2 flex-center">
-        <Image src="" alt="logo" width={30} height={30} />
-        <p className="logo-text">Blog</p>
+        <Image src={logo} alt="logo" width={60} height={60} />
+        <p className={`logo-text font-bold ${delaGothicOne.className}`} style={{color:"orange",fontSize:'1.5rem', lineHeight: '60px'}}>Blog</p>
       </Link>
       {/* {bigger screen navigation } */}
 
