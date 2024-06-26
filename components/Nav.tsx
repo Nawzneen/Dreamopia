@@ -38,7 +38,7 @@ export default function Nav() {
   }, []);
 
   return (
-    <nav className=" justify-between flex w-full mb-16 pt-3">
+    <nav className=" justify-between flex w-full mb-8 pt-3 px-1 py-1 md:px-3 md:py-3 lg:px-5 lg lg:py-5 shadow-md" style={{backgroundColor: 'var(--primary-color)'}}>
       <Link href="/" className="flex gap-2 flex-center">
         <Image src={logo} alt="logo" width={60} height={60} />
         <p
