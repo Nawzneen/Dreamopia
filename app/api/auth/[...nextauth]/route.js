@@ -19,7 +19,8 @@ const handler = NextAuth({
         );
         const user = queryResult.rows[0];
         // store user ID in session
-        session.user.id = user.id.toString();
+        // should i turn this into string?!
+        session.user.user_id = user.user_id;
         return session;
       } catch (error) {
         console.error("error fetching user from postgreSQL", error.message);
@@ -27,16 +28,13 @@ const handler = NextAuth({
       }
     },
     async signIn({ profile }) {
-        console.log("profile is",profile)
       try {
         const db = await connectToDB();
         const queryResult = await db.query(
           "SELECT * FROM users WHERE email = $1",
           [profile.email]
         );
-        console.log("query results isssssssssssss",queryResult)
         const user = queryResult.rows[0];
-        console.log("user is", user)
         if (!user) {
             console.log("user doesnt exist")
 
