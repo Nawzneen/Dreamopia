@@ -24,28 +24,28 @@ const delaGothicOne = Dela_Gothic_One({
 
 export default function Nav() {
   const { data: session } = useSession();
-  // console.log(session);
   const [providers, setProviders] = useState<Providers | null>(null);
   const [dropDown, setDropDown] = useState<boolean>(false);
 
   useEffect(() => {
     const fetchProviders = async () => {
       const response = await getProviders();
-      // console.log("response is", response);
       setProviders(response);
     };
     fetchProviders();
   }, []);
 
   return (
-    <nav className=" justify-between flex w-full mb-8 pt-3 px-1 py-1 md:px-3 md:py-3 lg:px-5 lg lg:py-5 shadow-md" style={{backgroundColor: 'var(--primary-color)'}}>
+    <>
+
+    <nav className=" justify-between flex w-full pt-3 px-1 py-1 md:px-3 md:py-3 lg:px-5 lg lg:py-5 shadow-lg" >
       <Link href="/" className="flex gap-2 flex-center">
         <Image src={logo} alt="logo" width={60} height={60} />
         <p
           className={`logo-text font-bold ${delaGothicOne.className}`}
-          style={{ color: "orange", fontSize: "1.5rem", lineHeight: "60px" }}
+          style={{ color: "orange", fontSize: "1.5rem",  }}
         >
-          Blog
+          InQuotes
         </p>
       </Link>
       {/* {alert(providers)} */}
@@ -53,17 +53,15 @@ export default function Nav() {
 
       <div className="sm:flex hidden">
         {session?.user ? (
-          <div className="flex gap-3 md:gap-5 items-center">
-            <Link href="/create-post" className="create_btn btn ">
+          <div className="flex gap-1 md:gap-3 items-center">
+            <button className="create_btn btn text-sm">
+            <Link href="/create-post" className="">
+
               Create Post
+              
             </Link>
-            <button
-              type="button"
-              onClick={() => signOut()}
-              className="signout_btn btn"
-            >
-              Sign Out
             </button>
+
             <Link href="/profile">
               <Image
                 src={session?.user.image || blankProfilePic}
@@ -73,6 +71,12 @@ export default function Nav() {
                 className="rounded-full"
               />
             </Link>
+            <div
+              onClick={() => signOut()}
+              className="signout_btn  text-sm hover:cursor-pointer"
+            >
+             <svg style={{color: "var(--tertiary-color)"}} className="w-8 h-8"  viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">  <path stroke="none" d="M0 0h24v24H0z"/>  <path d="M14 8v-2a2 2 0 0 0 -2 -2h-7a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h7a2 2 0 0 0 2 -2v-2" />  <path d="M7 12h14l-3 -3m0 6l3 -3" /></svg>
+            </div>
           </div>
         ) : (
           <>
@@ -118,7 +122,7 @@ export default function Nav() {
                     className="dropdown_link"
                     onClick={() => setDropDown(false)}
                   >
-                    Create Prompt
+                    Create Quote
                   </Link>
                   <button
                     type="button"
@@ -126,7 +130,7 @@ export default function Nav() {
                       setDropDown(false);
                       signOut();
                     }}
-                    className="mt-5 w-full signout_btn btn"
+                    className="mt-5 w-full signout_btn btn hover:cursor-pointer"
                   >
                     Sign Out
                   </button>
@@ -151,5 +155,6 @@ export default function Nav() {
         )}
       </div>
     </nav>
+    </>
   );
 }
