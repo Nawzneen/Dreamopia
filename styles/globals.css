@@ -1,7 +1,8 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Grandstander:ital,wght@0,100..900;1,100..900&display=swap');
 :root {
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
@@ -33,27 +34,48 @@
 }
 
 :root {
-  --primary-color: #265073;
+  /* --primary-color: #265073;
   --secondary-color: #2D9596;
   --tertiary-color: #9AD0C2;
-  --quaternary-color: #F1FADA;
+  --quaternary-color: #F1FADA; */
+  --font-color: ##2f4858;
+  --base-color: #466a71;
+  --primary-color: #698c87;
+  --secondary-color: #95ae9c;
+  --tertiary-color: #c8cfb5;
+  --quaternary-color: #fef0d6;
+  --primary-font-handwritten: 'Pacifico', cursive;
+  --secondary-font-handwritten: 'Amatic SC', cursive;
+  --tertiary-font-handwritten: 'Caveat', cursive;
 }
+
+/* .grandstander-<uniquifier> {
+  font-family: "Grandstander", cursive;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: normal;
+} */
+
 /* ---------------------- */
+h1 h2 h3 h4 h5 h6{
+  font-family: var(--primary-font-sans-serif) !important;
+  
+}
 
 .container {
   margin-left: auto;
   margin-right: auto;
-  max-width: 90%; /* 7xl size in Tailwind CSS */
-  /* padding-left: 1rem;
-  padding-right: 1rem; */
+     padding-left: 1.5rem;
+    padding-right: 1.5rem;
+
 }
 
 @media (min-width: 640px) {
   .container {
     /* padding-left: 1.5rem;
     padding-right: 1.5rem; */
-  max-width: 95%; /* 7xl size in Tailwind CSS */
-
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
   }
 }
 
@@ -61,6 +83,8 @@
   .container {
     /* padding-left: 2rem;
     padding-right: 2rem; */
+    padding-left: 3rem;
+    padding-right: 3rem;
   }
 }
 
@@ -68,28 +92,101 @@
   .container {
     /* padding-left: 2.5rem;
     padding-right: 2.5rem; */
-    max-width: 85%;
+    padding-left: 6rem;
+    padding-right: 6rem;
 
   }
 }
 
 @media (min-width: 1280px) {
   .container {
-    /* padding-left: 3rem;
-    padding-right: 3rem; */
-    max-width: 95%;
+    padding-left: 6rem;
+    padding-right: 6rem;
   }
+
 }
 
+/* //////////////// */
+body{
 
-/* ---------------------------- */
-.main-bg{
-    background-color: aqua;
+  font-family: var(--tertiary-font-display);
+  background-color: rgb(255, 255, 255);
+  /* background-image: url("../public/pexels-caio.jpg") !important;
+  background-repeat: none;
+  background-size:contain ; */
+
 }
-.btn {
+
+nav{
+height: 80px;
+/* background: rgb(38,80,115);
+background: linear-gradient(90deg, rgba(38,80,115,1) 0%, rgba(45,149,150,1) 100%, rgba(0,212,255,1) 100%);
+-webkit-box-shadow: -1px 18px 24px -23px rgba(0,0,0,0.75);
+-moz-box-shadow: -1px 18px 24px -23px rgba(0,0,0,0.75); */
+background: rgb(70,106,113);
+background: linear-gradient(90deg, rgba(70,106,113,1) 0%, rgba(252,255,203,1) 100%, rgba(105,140,135,1) 100%); 
+/* box-shadow: -1px 18px 24px -23px rgba(0,0,0,0.75) !important; */
+} */
+nav button{
+  border: 2px white solid !important;
+  padding: 4px 8px !important;
+}
+
+.home_header_section{
+  /* min-height: 90vh !important; */
+  font-family: "Grandstander", cursive;
+  /* background: rgb(38,80,115);
+  background: linear-gradient(90deg, rgba(38,80,115,1) 0%, rgba(45,149,150,1) 100%, rgba(0,212,255,1) 100%);
+  -webkit-box-shadow: -1px 18px 24px -23px rgba(0,0,0,0.75);
+  -moz-box-shadow: -1px 18px 24px -23px rgba(0,0,0,0.75);
+  box-shadow: -1px 18px 24px -23px rgba(0,0,0,0.75) !important; */
+  background-color: var(--primary-color);
+    /* background-image: url("../public/pexels-caio-46274.jpg") !important; */
+  background-repeat: no-repeat;
+  background-size:contain ;
+  border-radius: 10px;
+  /* height: 90vh; */
+  /* width: fit-content; */
+
+}
+.home_header_text {
+  color: rgb(226,158,33) !important;
+color: linear-gradient(90deg, rgba(226,158,33,1) 0%, rgba(252,255,203,1) 100%, rgba(0,212,255,1) 100%) !important;
+}
+.home_bottom_section{
   background-color: var(--secondary-color);
+}
+
+.right_section{
+  background: rgba( 255, 255, 255, 0.45 );
+box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+backdrop-filter: blur( 4px );
+-webkit-backdrop-filter: blur( 4px );
+border-radius: 10px;
+border: 1px solid rgba( 255, 255, 255, 0.18 );
+font-family: "Caveat", cursive;
+font-optical-sizing: auto;
+font-weight: 400;
+font-style: normal;
+height: 350px;
+/* background-image: url("../public/khatkhati.svg"); */
+}
+.arrows {
   color: var(--quaternary-color);
-    border-radius: 10px;
+  background-color: var(--secondary-color);
+  border-radius: 50%;
+  padding: 3px;
+}
+.arrows:hover{
+  background-color: var(--base-color);
+  cursor: pointer;
+}
+
+
+.btn {
+  background-color: var(--primary-color);
+  color: var(--quaternary-color);
+    border-radius: 5px;
     border: none;
     padding: 4px 8px;
 }
@@ -97,7 +194,7 @@
 .dropdown {
   position: absolute;
   font-size: 0.925rem;
-  background-color:orange;
+  background-color:var(--tertiary-color);
   right: 0;
   top: 100%; /* Equivalent to top-full in Tailwind */
   width: 100%; /* Equivalent to w-full in Tailwind */
@@ -112,9 +209,8 @@
   align-items: flex-end; /* Equivalent to items-end in Tailwind */
 }
 .dropdown .signout_btn{
-  width: 100%;
   margin-top: 5px;
-  background-color: white;
+  background-color: var(--primary-color);
   border: none;
   
 }
