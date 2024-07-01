@@ -1,7 +1,7 @@
 import NextAuth from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
 import { connectToDB } from "@utils/database";
-
+import {SessionUser} from "../../../../types/types"
 const handler = NextAuth({
   providers: [
     GoogleProvider({
@@ -21,6 +21,7 @@ const handler = NextAuth({
         // store user ID in session
         // should i turn this into string?!
         session.user.user_id = user.user_id;
+        // console.log("session is",session)
         return session;
       } catch (error) {
         console.error("error fetching user from postgreSQL", error.message);
