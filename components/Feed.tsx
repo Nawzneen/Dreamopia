@@ -1,16 +1,13 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import React, { FC, useState, useEffect } from "react";
 import PostCard from "@components/PostCard";
-interface Post {
-  title: string;
-  text: string;
-  id: number;
-}
-const PostCardList = ({ data, handleTagClick }) => {
-    console.log("data in postcard list issssssssssss", data)
+import {Post, FetchedPost, PostCardListProps } from "../types/types"
+
+
+const PostCardList: FC<PostCardListProps> = ({ data, handleTagClick }) => {
   return (
-    <div className="post_layout mt-16">
-      {data.map((post) => {
+    <div className="post_layout ">
+      {data.map((post : FetchedPost) => {
         return <PostCard key={post.post_id} post={post} />;
       })}
     </div>
@@ -19,7 +16,7 @@ const PostCardList = ({ data, handleTagClick }) => {
 
 export default function Feed() {
   const [searchText, setSearchText] = useState<string>("");
-  const [posts, setPosts] = useState([]);
+  const [posts, setPosts] = useState<FetchedPost[]>([]);
 
   //   -------
   useEffect(() => {
@@ -27,27 +24,31 @@ export default function Feed() {
       console.log("fetch posts from post api");
       const response = await fetch("/api/post");
       const data = await response.json();
-      console.log("data in feed issssssssssssssssss",data);
       setPosts(data);
     };
     fetchPosts();
   }, []);
-  function handleSearchChange(e) {}
+  function handleSearchChange(e: any) {}
   function handleTagClick() {
     console.log("test");
   }
   return (
-    <section className="feed">
-      <form className="relative w-full flex-center">
+    <section className="feed_section ">
+      <div className="flex justify-center align-center  ">
+      <form className="relative w-full  flex" style={{backgroundColor: "var(--quaternary-color)"}}>
         <input
           value={searchText}
           onChange={handleSearchChange}
           required
           type="text"
-          placeholder="search for a tag or a username"
+          placeholder="search for a tag..."
+          className="p-1 w-full"
+          style={{backgroundColor: "var(--quaternary-color)"}}
         />
+        <button className="btn">Search</button>
       </form>
-      <PostCardList data={posts} handleTagClick={handleTagClick} />
+      </div>
+      <PostCardList data={posts} handleTagClick={handleTagClick}  />
     </section>
   );
 }
