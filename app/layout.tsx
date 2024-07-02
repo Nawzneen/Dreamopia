@@ -4,6 +4,7 @@ import "@styles/globals.css";
 import Nav from '@components/Nav';
 import Provider from '@components/Provider';
 import React from "react";
+import {Session} from "../types/types"
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -14,7 +15,7 @@ export const metadata: Metadata = {
 
 interface RootLayoutProps{
   children: React.ReactNode;
-  session: any,
+  session: Session,
 }
 
 export default function RootLayout({
@@ -23,7 +24,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <Provider> 
+        <Provider > 
             <div className="main">
               <div className="main-bg"/>
             </div>
