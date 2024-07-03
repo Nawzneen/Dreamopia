@@ -2,16 +2,16 @@ export interface Post {
   post_id: number;
   user_id: number;
   category_id?: number | null;
-  title?: string;
-  text: string;
+  text?: string;
+  author?: string;
   created_at: string;
   last_edit?: string | null;
   tags?: string[] | null;
 }
 
 export interface FetchedPost extends Post {
-  username: string;
-  email: string;
+  username?: string;
+  email?: string;
   category?: string;
   image?: string;
 }
@@ -21,8 +21,8 @@ export interface User {
   email: string;
   username: string;
   created_at: string;
-  about: string | null;
-  favorite_genres: string[] | null;
+  about?: string | null;
+  favorite_genres?: string[] | null;
 }
 export interface Category {
   category_id: number;
@@ -36,10 +36,11 @@ export interface Category {
 //   image?: string | null | undefined;
 // }
 export interface Session {
-  user: User;
+  user?: User;
 }
 export interface PostCardProps{
   post: FetchedPost;
+  name?: string;
   handleEdit?: (post_id: number) => void;
   handleDelete?: (post_id: number) => Promise<void>;
   handleTagClick?: (tag: string) => void;
