@@ -8,8 +8,7 @@ import {PostCardProps, User} from "../types/types"
 
 
 
-const PostCard: React.FC<PostCardProps> = ({post, handleEdit, handleDelete, handleTagClick}) => {
-
+const PostCard: React.FC<PostCardProps> = ({name, post, handleEdit, handleDelete, handleTagClick}) => {
   const pathName = usePathname();
   const createdDate = formatDate(post.created_at);
   const editedDate = post.last_edit ? formatDate(post.last_edit) : "Not available";
@@ -120,13 +119,17 @@ const PostCard: React.FC<PostCardProps> = ({post, handleEdit, handleDelete, hand
         <p className="mb-3 font-normal text-base text-gray-500 dark:text-gray-400">
           {post.text}
         </p>
-        <div className="post_tags_container w-full flex flex-row items-center justify-end">
-          <div className="post_tags rounded-full px-2 py-1  bg-red-400 text-amber-100 text-sm font-semibold">
-            # test
+        <div className="post_tags_container w-full flex flex-row items-center justify-end ">
+            {post.tags?.map((tag, i)=> {return (
+          <div  key={i} className="post_tags rounded-full px-2 py-1 ml-1  bg-red-400 text-amber-100 text-sm font-semibold">
+            #{tag}
           </div>
+            )} )}
+           
         </div>
         <div className="spacer flex-1" style={{ height: "40px" }}></div>
         <div className="post_author_date bg-gray-300 py-3 px-6  absolute bottom-0 left-0 w-full flex justify-between items-center ">
+          {name !== "profile" && ( 
           <div>
             {post.image ? (
               <Image
@@ -147,6 +150,8 @@ const PostCard: React.FC<PostCardProps> = ({post, handleEdit, handleDelete, hand
             )}
             <span className="font-semibold">{post.username}</span>
           </div>
+          )
+          }
           <div>
             <span className="text-sm">{createdDate}</span>
           </div>
