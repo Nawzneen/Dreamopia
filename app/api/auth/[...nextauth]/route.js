@@ -1,7 +1,6 @@
 import NextAuth from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
 import { connectToDB } from "@utils/database";
-import {SessionUser} from "../../../../types/types"
 const handler = NextAuth({
   providers: [
     GoogleProvider({
@@ -18,9 +17,11 @@ const handler = NextAuth({
           [session.user.email]
         );
         const user = queryResult.rows[0];
+        console.log("user in session is", user)
         // store user ID in session
         // should i turn this into string?!
         session.user.user_id = user.user_id;
+        session.user.username = user.username;
         // console.log("session is",session)
         return session;
       } catch (error) {
