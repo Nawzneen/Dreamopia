@@ -39,7 +39,6 @@ export default function Home() {
           throw new Error(`Error: ${response.statusText}`);
         }
         const data = await response.json();
-        console.log(data);
         setRandomQuote(data[0]);
       } catch (error) {
         console.log(error);

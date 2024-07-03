@@ -1,22 +1,21 @@
-"use client"
-import React, { useEffect, useState } from 'react';
-import {User} from "@types/types" 
+"use client";
+import React, { useEffect, useState } from "react";
+import { User } from "../types/types";
 export default function Users() {
   const [users, setUsers] = useState<User[]>([]);
 
   useEffect(() => {
     const fetchUsers = async () => {
       try {
-        const response = await fetch('/api/users'); 
+        const response = await fetch("/api/users");
         if (response.ok) {
           const data = await response.json();
-          console.log("users are", data)
-          setUsers(data.slice(0, 10)); 
+          setUsers(data.slice(0, 10));
         } else {
-          console.error('Failed to fetch users');
+          console.error("Failed to fetch users");
         }
       } catch (error) {
-        console.error('Error fetching users:', error);
+        console.error("Error fetching users:", error);
       }
     };
 
