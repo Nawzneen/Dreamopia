@@ -1,16 +1,9 @@
-import Image from "next/image";
-import loading from "@public/loading.svg"
+import React from 'react';
 
 const Loading = () => {
   return (
-    <div className='w-full flex-center'>
-      <Image
-        src={loading}
-        width={50}
-        height={50}
-        alt='loader'
-        className='object-contain'
-      />
+    <div className="flex items-center justify-center min-h-screen">
+      <div className="loader ease-linear rounded-full border-8 border-t-8 border-gray-200 h-64 w-64"></div>
     </div>
   );
 };
