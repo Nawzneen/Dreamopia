@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "@styles/globals.css";
 import Nav from "@components/Nav";
+import Footer from "@components/Footer";
 import Provider from "@components/Provider";
 import React from "react";
 import { Session } from "../types/types";
@@ -23,12 +24,10 @@ export default function RootLayout({ children, session }: RootLayoutProps) {
     <html lang="en">
       <body className={inter.className}>
         <Provider>
-          <div className="main">
-            <div className="main-bg" />
-          </div>
-          <main className="app">
+          <main className="app  flex flex-col min-h-screen">
             <Nav />
-            {children}
+            <div className="flex flex-col flex-grow">{children}</div>
+            <Footer />
           </main>
         </Provider>
       </body>
