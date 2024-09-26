@@ -3,6 +3,7 @@
 @tailwind utilities;
 @import url("https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Grandstander:ital,wght@0,100..900;1,100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&family=Grandstander:ital,wght@0,100..900;1,100..900&display=swap");
 :root {
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
@@ -17,16 +18,6 @@
   }
 }
 
-/* body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
-} */
-
 @layer utilities {
   .text-balance {
     text-wrap: balance;
@@ -34,29 +25,22 @@
 }
 
 :root {
-  /* --primary-color: #265073;
-  --secondary-color: #2D9596;
-  --tertiary-color: #9AD0C2;
-  --quaternary-color: #F1FADA; */
   --font-color: #2f4858;
   --base-color: #466a71;
   --primary-color: #698c87;
-  --secondary-color: #95ae9c;
+  --secondary-color: #f9f871;
   --tertiary-color: #c8cfb5;
   --quaternary-color: #fef0d6;
   --primary-font-handwritten: "Pacifico", cursive;
   --secondary-font-handwritten: "Amatic SC", cursive;
   --tertiary-font-handwritten: "Caveat", cursive;
+  --primary-font: "Grandstander", cursive;
 }
-
-/* .grandstander-<uniquifier> {
-  font-family: "Grandstander", cursive;
-  font-optical-sizing: auto;
-  font-weight: 500;
-  font-style: normal;
-} */
-
-/* ---------------------- */
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
 h1 h2 h3 h4 h5 h6 {
   font-family: var(--primary-font-sans-serif) !important;
 }
@@ -103,7 +87,6 @@ h1 h2 h3 h4 h5 h6 {
   }
   .home_header_section {
     width: 800px !important;
-
   }
 }
 
@@ -114,7 +97,6 @@ h1 h2 h3 h4 h5 h6 {
   }
   .home_header_section {
     width: 1000px !important;
-
   }
 }
 @media (min-width: 1536px) {
@@ -124,8 +106,6 @@ h1 h2 h3 h4 h5 h6 {
   }
   .home_header_section {
     width: 1000px !important;
-
-
   }
 }
 
@@ -133,29 +113,6 @@ h1 h2 h3 h4 h5 h6 {
 body {
   font-family: var(--tertiary-font-display);
   background-color: rgb(255, 255, 255);
-  /* background-image: url("../public/pexels-caio.jpg") !important;
-  background-repeat: none;
-  background-size:contain ; */
-}
-
-nav {
-  height: 80px;
-  /* background: rgb(38,80,115);
-background: linear-gradient(90deg, rgba(38,80,115,1) 0%, rgba(45,149,150,1) 100%, rgba(0,212,255,1) 100%);
--webkit-box-shadow: -1px 18px 24px -23px rgba(0,0,0,0.75);
--moz-box-shadow: -1px 18px 24px -23px rgba(0,0,0,0.75); */
-  background: rgb(70, 106, 113);
-  background: linear-gradient(
-    90deg,
-    rgba(70, 106, 113, 1) 0%,
-    rgba(252, 255, 203, 1) 100%,
-    rgba(105, 140, 135, 1) 100%
-  );
-  /* box-shadow: -1px 18px 24px -23px rgba(0,0,0,0.75) !important; */
-}
-*/ nav button {
-  border: 2px white solid !important;
-  padding: 4px 8px !important;
 }
 
 .home_header_section {
@@ -165,10 +122,8 @@ background: linear-gradient(90deg, rgba(38,80,115,1) 0%, rgba(45,149,150,1) 100%
   background-size: contain;
   border-radius: 10px;
   width: 400px;
-  margin-left: auto ;
-  margin-right: auto ;
-
-
+  margin-left: auto;
+  margin-right: auto;
 }
 .home_header_text {
   color: rgb(226, 158, 33) !important;
@@ -195,8 +150,8 @@ background: linear-gradient(90deg, rgba(38,80,115,1) 0%, rgba(45,149,150,1) 100%
   font-weight: 400;
   font-style: normal;
 }
-.random_quote_text{
-  overflow-wrap: break-word; 
+.random_quote_text {
+  overflow-wrap: break-word;
 }
 .arrows {
   color: var(--quaternary-color);
