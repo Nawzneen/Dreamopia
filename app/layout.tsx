@@ -9,8 +9,8 @@ import {Session} from "../types/types"
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Blog",
-  description: "A blog for fantasy fans!",
+  title: "InQoutes",
+  description: "A blog for quote lovers!",
 };
 
 interface RootLayoutProps{
