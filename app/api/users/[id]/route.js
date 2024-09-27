@@ -1,3 +1,4 @@
+// TO FETCH USERS BY ID 
 import { connectToDB } from "@utils/database";
 export const GET = async (req, { params }) => {
   // params for dynamic variables

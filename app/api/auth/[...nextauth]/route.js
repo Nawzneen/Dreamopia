@@ -21,7 +21,6 @@ const handler = NextAuth({
         // store user ID in session
         // should i turn this into string?!
         session.user.user_id = user.user_id;
-        session.user.username = user.username;
         // console.log("session is",session)
         return session;
       } catch (error) {
