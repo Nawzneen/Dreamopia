@@ -1,14 +1,16 @@
 "use client";
 import React, { FC, useState, useEffect } from "react";
-import PostCard from "@components/PostCard";
-import {Post, FetchedPost, PostCardListProps } from "../types/types"
-
-
-const PostCardList: FC<PostCardListProps> = ({ data, handleTagClick }) => {
+import QuoteCard from "@components/QuoteCard";
+import { Quote, FetchedQuote, QuoteCardListProps } from "../types/types";
+import Input from "@components/Input";
+import Button from "@components/Button";
+const QuoteCardList: FC<QuoteCardListProps> = ({ data, handleTagClick }) => {
   return (
-    <div className="post_layout ">
-      {data.map((post : FetchedPost) => {
-        return <PostCard key={post.post_id} post={post} />;
+    <div className="">
+      {data.map((quote: FetchedQuote) => {
+        return (
+          <QuoteCard key={quote.quote_id} quote={quote} showUserInfo={true} />
+        );
       })}
     </div>
   );
@@ -16,39 +18,46 @@ const PostCardList: FC<PostCardListProps> = ({ data, handleTagClick }) => {
 
 export default function Feed() {
   const [searchText, setSearchText] = useState<string>("");
-  const [posts, setPosts] = useState<FetchedPost[]>([]);
+  const [quotes, setQuotes] = useState<FetchedQuote[]>([]);
 
   //   -------
   useEffect(() => {
-    const fetchPosts = async () => {
-      console.log("fetch posts from post api");
-      const response = await fetch("/api/post");
-      const data = await response.json();
-      setPosts(data);
+    const fetchQuotes = async () => {
+      console.log("fetch quotes from quotes api");
+      const response = await fetch("/api/quote");
+      try {
+        const data = await response.json();
+        console.log("quotes should be", data);
+        setQuotes(data);
+      } catch (error) {
+        console.log("there is an error", error);
+      }
     };
-    fetchPosts();
+    fetchQuotes();
   }, []);
   function handleSearchChange(e: any) {}
   function handleTagClick() {
     console.log("test");
   }
   return (
-    <section className="feed_section ">
+    <div className="mx-auto w-[480px] mt-4 md:mt-8">
       <div className="flex justify-center align-center  ">
-      <form className="relative w-full  flex" style={{backgroundColor: "var(--quaternary-color)"}}>
-        <input
-          value={searchText}
-          onChange={handleSearchChange}
-          required
-          type="text"
-          placeholder="search for a tag..."
-          className="p-1 w-full"
-          style={{backgroundColor: "var(--quaternary-color)"}}
-        />
-        <button className="btn">Search</button>
-      </form>
+        <form className=" w-full  grid grid-cols-[80%_20%]  md:gap-4">
+          <Input type="" placeholder="Search here" toColor="gray-200" />
+          <Button text="Search" toColor="gray-200" />
+
+          {/* <input
+            value={searchText}
+            onChange={handleSearchChange}
+            required
+            type="text"
+            placeholder="search for a tag..."
+            className="p-1 w-full"
+            style={{ backgroundColor: "var(--quaternary-color)" }}
+          /> */}
+        </form>
       </div>
-      <PostCardList data={posts} handleTagClick={handleTagClick}  />
-    </section>
+      <QuoteCardList data={quotes} handleTagClick={handleTagClick} />
+    </div>
   );
 }

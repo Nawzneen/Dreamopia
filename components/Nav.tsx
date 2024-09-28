@@ -39,7 +39,7 @@ export default function Nav() {
 
   return (
     <>
-      <nav className="bg-gray-800 py-4 b max-width mx-auto shadow-2xl  ">
+      <nav className="bg-gray-800 pt-4 b w-full mx-auto shadow-2xl  ">
         <div className="items-center flex justify-around">
           <div>
             <Link href="/" className="">
@@ -59,7 +59,7 @@ export default function Nav() {
                 </div>
                 <div className="nav-item">
                   <button className="bg-secondary-color h-[30px] px-3 py-1 rounded-lg bg-gradient-to-r from-secondary-color to-primary-color">
-                    <Link href="/create-post" className="">
+                    <Link href="/create-post" className="text-white">
                       Create
                     </Link>
                   </button>
@@ -173,6 +173,7 @@ export default function Nav() {
             )}
           </div>
         </div>
+
         <div className="relative h-[1px] top-0 left-0 right-0 bottom-0 w-auto mx-[2px] mt-[0.85em] ml-[3px] flex-grow rounded-[4px] bg-gradient-to-r  from-secondary-color to-primary-color"></div>
       </nav>
     </>
