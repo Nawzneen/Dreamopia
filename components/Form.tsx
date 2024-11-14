@@ -23,20 +23,17 @@ export default function Form({
     setPost({ ...post, tags: tagsArray });
   };
   return (
-    <section className="w-full max-w-full flex justify-center items-center flex-start flex-col">
-      <h1 className="text-left">
-        <span className="">{type} Post</span>
+    <section className="w-full max-w-full flex justify-center items-center flex-start flex-col mt-8 md:mt-16">
+      <h1 className="text-left  text-xl md:text-2xl uppercase font-bold  ${delaGothicOne.className} font-sans">
+        <span className="text-orange-600"> {type}</span> and share your quotes!
       </h1>
-      <p className="desc text-left max-w-md">
-        {type} and share what you think!
-      </p>
       <form
         onSubmit={handleSubmit}
         className="mt-10 w-full max-w-2xl flex flex-col gap-5 glassmorphism"
       >
         <label className="flex flex-col">
           <span className="font-satoshi font-semibold text-base text-gray-700 ">
-            Your Post
+            Your Quote
           </span>
           <textarea
             value={post.text}

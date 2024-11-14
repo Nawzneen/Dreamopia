@@ -5,6 +5,7 @@ import BlankProfile from "@public/blank_profile_pic.png";
 import { useSession } from "next-auth/react";
 import { usePathname, useRouter } from "next/navigation";
 import { Quote } from "@/types/types";
+import { GoHeartFill, GoHeart } from "react-icons/go";
 interface QuoteCardProps {
   quote: Quote;
   handleEdit?: (quote_id: number) => void;
@@ -33,26 +34,34 @@ const QuoteCard: React.FC<QuoteCardProps> = ({ quote, showUserInfo }) => {
           <Image
             src={BlankProfile}
             alt="user profile"
-            width={30}
-            height={30}
+            width={40}
+            height={40}
             className="inline mr-2 rounded-full"
           />
-          <span className="text-sm">{quote.user.username}</span>
+          <span className="text-sm mr-3">{quote.user.username}</span>
         </div>
         <span className="text-xs">{createdDate}</span>
       </div>
-      <p>{quote.text}</p>
-      <p className="text-right text-sm">{quote.author}</p>
-      <div className="quoteCard_tags text-xs ">
-        {quote.tags?.map((tag, i) => {
-          return (
-            <span key={i} className="pr-1">
-              #{tag}
-            </span>
-          );
-        })}
+      <p className="pt-3 text-justify leading-5 font-sans">{quote.text}</p>
+      <p className="text-right text-xs text-gray-600">{quote.author}</p>
+
+      <div className="flex flex-row justify-between items-center mt-2">
+        <div className="quoteCard_tags text-xs ">
+          {quote.tags?.map((tag, i) => {
+            return (
+              <span key={i} className="mr-1  text-gray-600">
+                #{tag}
+              </span>
+            );
+          })}
+        </div>
+        <div className="flex flex-row gap-1 items-center justify-center">
+          <span className="text-right text-xs text-gray-600">1231</span>
+          <GoHeartFill color="gray" />
+          <GoHeart />
+        </div>
       </div>
-      <div className="relative h-[1px] top-0 left-0 right-0 bottom-0 w-auto mx-[2px] mt-[0.85em] ml-[3px] flex-grow rounded-[4px] bg-gradient-to-r  from-secondary-color to-primary-color"></div>
+      <div className="relative h-[1px] top-0 left-0 right-0 bottom-0 w-auto mx-[2px] mt-[0.85em] ml-[3px] flex-grow rounded-[4px] bg-gradient-to-r  from-tertiary-color to-quaternary-color"></div>
     </div>
   );
 };

@@ -1,15 +1,18 @@
-export interface Post {
-  post_id: number;
-  user_id: number;
-  category_id?: number | null;
-  text?: string;
-  author?: string;
+export interface Quote {
+  quote_id: number;
+  author: string;
+  text: string;
   created_at: string;
-  last_edit?: string | null;
-  tags?: string[] | null;
+  tags: string[];
+  user: {
+    user_id: number;
+    username: string;
+    email: string;
+    image?: string;
+  };
 }
 
-export interface FetchedPost extends Post {
+export interface FetchedQuote extends Quote {
   username?: string;
   email?: string;
   category?: string;
@@ -21,8 +24,7 @@ export interface User {
   email: string;
   username: string;
   created_at: string;
-  about?: string | null;
-  favorite_genres?: string[] | null;
+  about?: string | undefined;
 }
 export interface Category {
   category_id: number;
@@ -38,14 +40,14 @@ export interface Category {
 export interface Session {
   user?: User;
 }
-export interface PostCardProps{
-  post: FetchedPost;
+export interface QuoteCardProps {
+  quote: FetchedQuote;
   name?: string;
-  handleEdit?: (post_id: number) => void;
-  handleDelete?: (post_id: number) => Promise<void>;
+  handleEdit?: (quote_id: number) => void;
+  handleDelete?: (quote_id: number) => Promise<void>;
   handleTagClick?: (tag: string) => void;
 }
-export interface PostCardListProps{
-  data: FetchedPost[];
-  handleTagClick?:  (tag: string) => void
+export interface QuoteCardListProps {
+  data: FetchedQuote[];
+  handleTagClick?: (tag: string) => void;
 }

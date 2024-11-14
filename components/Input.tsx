@@ -21,7 +21,7 @@ const Input: FC<InputProps> = ({
     <input
       type={type}
       placeholder={placeholder}
-      className={`ml-2 py-1 px-3 text-sm rounded-lg h-[30px] ${textColor} bg-gradient-to-r ${width} from-${fromColor} 
+      className={` py-1 px-3 text-sm rounded-lg h-[30px] ${textColor} bg-gradient-to-r ${width} from-${fromColor} 
         to-${toColor} ${className}`}
     />
   );
